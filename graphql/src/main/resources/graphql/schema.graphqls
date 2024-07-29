@@ -1,0 +1,59 @@
+type Posts {
+    id:ID,
+    name:String,
+    content:String,
+    noOfLikes:Int,
+    comments: [PostComments]
+}
+
+type PostComments {
+    id: ID,
+    content: String
+}
+
+type Student {
+    id:ID,
+    name:String,
+    address: Address
+}
+
+type Address {
+    id:ID,
+    name:String,
+    city:String,
+    country:String
+}
+
+type Query {
+    getAllPosts:[Posts]
+    getPostById(postId:Int):Posts
+    getAllStudents: [Student]
+    getStudentById(studentId:Int):Student
+    getAllAddress: [Address]
+    getAddressById(addressId: Int): Address
+}
+
+input PostDTO {
+    name: String,
+    content: String,
+    noOfLikes: Int,
+    isDisplay: Boolean
+}
+
+input StudentDTO {
+    name: String,
+    address: String
+}
+
+input AddressDTO {
+    name: String,
+    city: String,
+    country: String
+}
+
+type Mutation {
+    createNewPost(postDTO: PostDTO):Posts
+    createNewStudent(studentDTO: StudentDTO): Student
+    createNewAddress(addressDTO: AddressDTO): Address
+}
+
